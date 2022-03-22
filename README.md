@@ -11,7 +11,7 @@ Transform user input to proper double (float) formatting and return: first match
     //     - "42.56.7" returns "42.56",
     //     - "....42..99.1.2.3.." returns "42.99",
     //     - ".5" returns "5"
-    //     - "The Ministry of Silly Walks" returns minValue
+    //     - "The Ministry of Silly Walks" returns defaultValue
     //
     // 1) (split) ------ remove any extra dots,
     // 2) (join) ------- connect with dots,
