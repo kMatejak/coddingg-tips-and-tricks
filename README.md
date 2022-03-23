@@ -5,7 +5,7 @@
 Transform user input to proper double (float) formatting and return: first matching result / integer / given additional argument, fixed to set floating point.
 
 ```typescript
-  private static getCorrectNumFormat(value: string, defaultValue: number, precision: number): number {
+  private static getCorrectNumFormat(value: string, defaultValue: number, precision: number): string {
     // Transform user input to proper double (float) formatting and return:
     // first matching result / integer / given additional argument. For example:
     //     - "42.56.7" returns "42.56",
@@ -22,8 +22,7 @@ Transform user input to proper double (float) formatting and return: first match
     const trimmed = value.split(/\.+/).join(".").replace(/^\.|\.$/g, '');
     const doubled = trimmed.match(/[0-9]+\.[0-9]+/);
     const integrd = trimmed.match(/[0-9]+/);
-    const result = Number(doubled ? doubled[0] : (integrd ? integrd[0] : defaultValue)).toFixed(precision);
-
-    return Number(result);
+    
+    return Number(doubled ? doubled[0] : (integrd ? integrd[0] : defaultValue)).toFixed(precision);
   }
 ```
