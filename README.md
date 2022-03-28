@@ -26,3 +26,23 @@ Transform user input to proper double (float) formatting and return: first match
     return Number(doubled ? doubled[0] : (integrd ? integrd[0] : defaultValue)).toFixed(precision);
   }
 ```
+
+### 1.2. The Minor Pattern Validator  
+Get a value from an input's event and patch scoped value or set an error if it not matched to pattern. As in example above that validation approach checks if a number format is entered.   
+
+```typescript
+  inputChange(event: any) {
+    const value = event.target.value;
+    if (SliderComponent.validInputPattern(value, this.formItem.itemMeta.valueType)) {
+        const scoped = this.getScopedValue(value);
+        this.formControl.patchValue(scoped);
+    }
+    else {
+        this.setErrors();
+    }
+  }
+  
+  private static validInputPattern(value: string, inputType: string) {
+    return Boolean(value.match(new RegExp('^\\d+(?:[.,]\\d+?)?$')));
+  }
+  ```
